@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="./fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="./admin.css">
+</head>
+
+<body>
+    <!--! HEADER by devCuong -->
+    <header>
+        <div class="header_content">
+            <div class="header_brand">
+            </div>
+            <a class="header_back d-flex align-items-center" href="./" style="text-decoration: none;">
+                <div class="icon-back">
+
+                </div>
+                <span class="text-info-emphasis">Quay lại</span>
+            </a>
+        </div>
+    </header>
+
+    <!--! TABLE by devCuong -->
+    <section class="table-container">
+        <h2 class="text-center mb-5 fs-1 text-info-emphasis">Sale Management</h2>
+        <div class="search-add d-flex my-4 justify-content-between">
+            <div class="input_search">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" placeholder="Search for Items" id="search">
+                        <button type="button" class="input-group-text" id="inputGroup-sizing-default"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <button class="btn-themSP" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Add item</button>
+        </div>
+        <div class="mytable">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="column1">STT</th>
+                        <th class="column2">NAME</th>
+                        <th class="column3">IMAGE</th>
+                        <th class="column4">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Price
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" id="sx-tang">Sắp xếp tăng dần</a></li>
+                                    <li><a class="dropdown-item" id="sx-giam">Sắp xếp giảm dần</a></li>
+                                </ul>
+                                <i class="fa-solid fa-arrow-up mb-1" style="display: none;"></i>
+                                <i class="fa-solid fa-arrow-down mb-1" style="display: none;"></i>
+                            </div>
+                        </th>
+                        <th class="column5">DESC</th>
+                        <th class="column6">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id='tbody'>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+
+    <!--! FOOTER by devCuong -->
+    <!-- <footer></footer> -->
+
+
+    <!--! MODAL by devCuong -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel"></h1>
+                    <i class="fa-regular fa-circle-xmark" data-bs-dismiss="modal" id="iclose"></i>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <!-- <div class="group-1">
+
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Tên món ăn</label>
+                            <input type="text" class="form-control" id="name">
+                            <span class="sp-thongbao" id="tb-name"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="type" class="col-form-label">Loại</label>
+                            <select id="type" class="dropdown form-select">
+                                <option value="" selected>Item Type</option>
+                                <option value="Food">Food 🍖</option>
+                                <option value="Drink">Drink 🍷</option>
+                            </select>
+                            <span class="sp-thongbao" id="tb-type"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="img" class="col-form-label">Link hình ảnh</label>
+                            <input type="text" class="form-control" id="img">
+                            <span class="sp-thongbao" id="tb-img"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Giá món ăn</label>
+                            <input type="text" class="form-control" id="price">
+                            <span class="sp-thongbao" id="tb-price"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Mô tả</label>
+                            <textarea class="form-control desc" placeholder="chỉ nhập tối đa 50 từ" id="desc"
+                                rows="4"></textarea>
+                            <div class="d-flex justify-content-between">
+                                <span class="sp-thongbao" id="tb-desc"></span>
+                                <span class="text-end pt-2 count"><span id="wordCount">0</span>/30 từ</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary fs-5" id="btn-them">Add item</button>
+                    <button type="button" class="btn btn-primary fs-5" id="btn-update">Update item</button>
+                    <button type="button" class="btn btn-danger fs-5" id="btn-close"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-lg-start" style="background-color: #67d1be;">
+        <div class="container d-flex justify-content-center py-5">
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 rounded-circle" style="background-color: #54456b;">
+                <i class="fab fa-facebook-f"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 rounded-circle" style="background-color: #54456b;">
+                <i class="fab fa-youtube"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 rounded-circle" style="background-color: #54456b;">
+                <i class="fab fa-instagram"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 rounded-circle" style="background-color: #54456b;">
+                <i class="fab fa-twitter"></i>
+            </button>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2024 Bootcamp DN10 Capstone API
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Axios API -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"
+        integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="module" src="./util/admin.js"></script>
+</body>
+
+</html>
